@@ -7,8 +7,8 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 from sqlmodel import SQLModel
 
-from app.db import db_uri
-from app.models import Song
+from app.routers.songs.models import Song
+from app.utilities.db import db_uri
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

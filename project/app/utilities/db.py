@@ -8,9 +8,11 @@ from app.config import settings
 
 db_uri = f"{settings.db_protocol}://{settings.db_user}:{settings.db_password}@{settings.db_server}:{settings.db_port}/{settings.db_name}"
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('uvicorn.error')
 
 async_engine = create_async_engine(db_uri, echo=True)
+
+logger.info(f"Connecting to {settings.db_protocol}://{settings.db_server}:{settings.db_port}/{settings.db_name}")
 
 
 async def init_db():

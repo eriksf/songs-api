@@ -7,7 +7,7 @@ from sqlmodel import select
 from app.routers.songs.models import Song, SongCreate, SongPublic
 from app.utilities.db import get_session
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('uvicorn.error')
 
 router = APIRouter()
 

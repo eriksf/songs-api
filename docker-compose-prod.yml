@@ -1,0 +1,7 @@
+services:
+
+  web:
+    build: ./project
+    env_file: ./project/.env
+    ports:
+      - 8000:8000

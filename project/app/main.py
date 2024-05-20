@@ -8,13 +8,13 @@ from app.routers.songs import songs
 from app.routers.status import status
 
 description = """
-This is an API for Songs built with [FastAPI🚀](https://fastapi.tiangolo.com/) and [SQLModel](https://sqlmodel.tiangolo.com/)
+This is an API for Songs built with [FastAPI🚀](https://fastapi.tiangolo.com/) and [SQLModel](https://sqlmodel.tiangolo.com/).
 
 📝 [Source Code](https://github.com/eriksf/songs-api)
 🐞 [Issues](https://github.com/eriksf/songs-api/issues)
 """
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('uvicorn.error')
 
 
 app = FastAPI(
@@ -44,5 +44,6 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=8000,
         log_level="debug",
+        log_config="log_conf.yml",
         reload=True
     )

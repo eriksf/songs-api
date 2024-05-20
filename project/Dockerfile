@@ -37,5 +37,19 @@ COPY --from=poetry /usr/src/app/requirements.txt .
 # Install python dependencies
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Add app
-COPY . .
+# Add directories individually (to maintain directory structure)
+COPY app/ ./app/
+COPY data/ ./data/
+COPY migrations/ ./migrations/
+# Add files
+COPY alembic.ini \
+     gunicorn_conf.py \
+     log_conf.yml \
+     poetry.lock \
+     pyproject.toml \
+     ./
+
+ENV PORT 8000
+EXPOSE 8000
+
+ENTRYPOINT ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "-c", "gunicorn_conf.py", "--access-logfile='-'", "app.main:app"]

@@ -5,7 +5,7 @@ from fastapi import APIRouter
 from app.config import settings
 from app.routers.status.models import Status
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('uvicorn.error')
 
 router = APIRouter()
 
